@@ -1,4 +1,4 @@
-package com.acme;
+package com.acme.backend;
 
 import org.springframework.stereotype.Service;
 

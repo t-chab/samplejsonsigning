@@ -1,4 +1,4 @@
-package com.acme;
+package com.acme.backend;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

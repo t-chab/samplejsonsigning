@@ -8,20 +8,16 @@
     <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
     <jaxrs:server id="services" address="/">
         <jaxrs:serviceBeans>
-            <bean class="com.acme.HelloWorldImpl"/>
+            <bean class="com.acme.backend.HelloWorldImpl"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
-            <ref bean="jwsJsonContainerRequestFilter"/>
-            <ref bean="jwsJsonClientResponseFilter"/>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonContainerRequestFilter"/>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonClientResponseFilter"/>
         </jaxrs:providers>
         <jaxrs:properties>
             <entry key="rs.security.signature.properties"
                    value="signing-config.properties"/>
         </jaxrs:properties>
     </jaxrs:server>
-    <bean id="jwsJsonContainerRequestFilter"
-          class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonContainerRequestFilter" />
-    <bean id="jwsJsonClientResponseFilter"
-          class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonClientResponseFilter"/>
 </beans>

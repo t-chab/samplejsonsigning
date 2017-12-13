@@ -1,4 +1,4 @@
-package com.acme;
+package com.acme.backend;
 
 import org.apache.cxf.helpers.IOUtils;
 import org.apache.cxf.jaxrs.client.WebClient;
