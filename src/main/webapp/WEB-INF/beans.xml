@@ -12,7 +12,9 @@
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
-            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonWriterInterceptor"/>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonWriterInterceptor">
+                <property name="encodePayload" value="false"/>
+            </bean>
         </jaxrs:providers>
         <jaxrs:properties>
             <entry key="rs.security.signature.properties"
