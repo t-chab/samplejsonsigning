@@ -1,20 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation=" http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
     <import resource="classpath:META-INF/cxf/cxf.xml"/>
     <context:property-placeholder/>
     <context:annotation-config/>
+    <context:component-scan base-package="com.acme"/>
+
     <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
-    <jaxrs:server id="services" address="/">
+
+    <jaxrs:server id="helloService" address="/hello">
         <jaxrs:serviceBeans>
-            <bean class="com.acme.backend.HelloWorldImpl"/>
+            <ref bean="hello"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
-            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonWriterInterceptor">
-                <property name="encodePayload" value="false"/>
-            </bean>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonWriterInterceptor"/>
+        </jaxrs:providers>
+        <jaxrs:properties>
+            <entry key="rs.security.signature.properties"
+                   value="signing-config.properties"/>
+        </jaxrs:properties>
+    </jaxrs:server>
+
+    <jaxrs:server id="signService" address="/sign">
+        <jaxrs:serviceBeans>
+            <ref bean="sign"/>
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonContainerRequestFilter"/>
         </jaxrs:providers>
         <jaxrs:properties>
             <entry key="rs.security.signature.properties"

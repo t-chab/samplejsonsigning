@@ -1,18 +1,6 @@
 package com.acme.backend;
 
-import org.apache.cxf.helpers.IOUtils;
-import org.apache.cxf.jaxrs.client.WebClient;
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.map.MappingJsonFactory;
 import org.junit.BeforeClass;
-import org.junit.Test;
-
-import javax.ws.rs.core.Response;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class HelloWorldImplTest {
     private static String endpointUrl;
@@ -21,7 +9,7 @@ public class HelloWorldImplTest {
     public static void beforeClass() {
         endpointUrl = System.getProperty("service.url");
     }
-
+/*
     @Test
     public void testPing() throws Exception {
         WebClient client = WebClient.create(endpointUrl + "/hello/echo/SierraTangoNevada");
@@ -46,5 +34,5 @@ public class HelloWorldImplTest {
         JsonParser parser = factory.createJsonParser((InputStream)r.getEntity());
         JsonBean output = parser.readValueAs(JsonBean.class);
         assertEquals("Maple", output.getVal2());
-    }
+    }*/
 }
