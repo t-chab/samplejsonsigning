@@ -12,8 +12,7 @@
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
-            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonContainerRequestFilter"/>
-            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonClientResponseFilter"/>
+            <bean class="org.apache.cxf.rs.security.jose.jaxrs.JwsJsonWriterInterceptor"/>
         </jaxrs:providers>
         <jaxrs:properties>
             <entry key="rs.security.signature.properties"

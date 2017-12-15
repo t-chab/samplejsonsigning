@@ -18,7 +18,6 @@ public class HelloWorldImpl implements HelloWorld {
     @Consumes("application/json")
     @Path("/jsonBean")
     public Response signJson(JsonBean input) {
-        input.setVal2(input.getVal1());
         return Response.ok().entity(input).build();
     }
 }
