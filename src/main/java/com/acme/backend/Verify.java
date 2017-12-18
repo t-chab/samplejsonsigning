@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 @Path("/verify")
 public interface Verify {
     @POST
-    @Produces({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.TEXT_PLAIN})
     @Consumes({MediaType.APPLICATION_JSON})
     @Path("/check")
     Response verifySignedJson(JsonBean input);
