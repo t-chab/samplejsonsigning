@@ -9,9 +9,9 @@
 
     <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"/>
 
-    <jaxrs:server id="helloService" address="/hello">
+    <jaxrs:server id="signService" address="/sign">
         <jaxrs:serviceBeans>
-            <ref bean="hello"/>
+            <ref bean="sign"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>
@@ -23,9 +23,9 @@
         </jaxrs:properties>
     </jaxrs:server>
 
-    <jaxrs:server id="signService" address="/sign">
+    <jaxrs:server id="verifyService" address="/verify">
         <jaxrs:serviceBeans>
-            <ref bean="sign"/>
+            <ref bean="verify"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean class="org.codehaus.jackson.jaxrs.JacksonJsonProvider"/>

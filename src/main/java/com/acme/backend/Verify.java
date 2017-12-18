@@ -7,11 +7,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/hello")
-public interface HelloWorld {
+@Path("/verify")
+public interface Verify {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    @Path("/jsonBean")
-    Response signJson(JsonBean input);
+    @Path("/check")
+    Response verifySignedJson(JsonBean input);
 }

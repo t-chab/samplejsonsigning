@@ -12,6 +12,6 @@ public interface Sign {
     @POST
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
-    @Path("/signCheck")
-    Response verifySignedJson(JsonBean input);
+    @Path("/signJson")
+    Response signJson(JsonBean input);
 }

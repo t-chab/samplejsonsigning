@@ -6,7 +6,8 @@ import javax.ws.rs.core.Response;
 
 @Service("sign")
 public class SignImpl implements Sign {
-    public Response verifySignedJson(JsonBean input) {
-        return Response.ok().build();
+    public Response signJson(JsonBean input) {
+        return Response.ok().entity(input).build();
     }
 }
+
